@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franklin Templeton | Planview Account Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a1628;--navy2:#142342;--blue:#1a5fa8;--blue2:#2a7dd8;--blue-pale:#e8f1fb;
+  --teal:#0f6e56;--teal2:#1d9e75;--teal-pale:#e1f5ee;
+  --amber:#ba7517;--amber2:#ef9f27;--amber-pale:#faeeda;
+  --red:#a32d2d;--red-pale:#fcebeb;--coral:#993c1d;--coral-pale:#faece7;
+  --g900:#2c2c2a;--g700:#5f5e5a;--g400:#888780;--g200:#b4b2a9;--g100:#d3d1c7;--g50:#f1efe8;
+  --white:#fff;--border:rgba(10,22,40,.1);--shadow:0 1px 3px rgba(10,22,40,.07),0 4px 14px rgba(10,22,40,.05);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;background:#eef0f4;color:var(--g900);-webkit-font-smoothing:antialiased;}
+
+/* ─── SITE HEADER ─── */
+.site-header{background:var(--navy);padding:0 2rem;position:sticky;top:0;z-index:200;display:flex;align-items:center;gap:1rem;height:52px;border-bottom:1px solid rgba(255,255,255,.06);}
+.logo{font-size:13px;font-weight:700;color:#fff;letter-spacing:.08em;text-transform:uppercase;}
+.hdr-sep{width:1px;height:20px;background:rgba(255,255,255,.15);}
+.hdr-acct{font-size:13px;color:rgba(255,255,255,.55);}
+.hdr-badge{margin-left:auto;font-size:11px;font-weight:500;padding:3px 9px;border-radius:4px;background:rgba(29,158,117,.2);color:#5dcaa5;border:1px solid rgba(29,158,117,.3);}
+.hdr-date{font-size:11px;color:rgba(255,255,255,.3);}
+
+/* ─── NAV ─── */
+.nav-bar{background:var(--navy2);padding:0 2rem;display:flex;gap:0;overflow-x:auto;border-bottom:1px solid rgba(255,255,255,.06);scrollbar-width:none;}
+.nav-bar::-webkit-scrollbar{display:none;}
+.nav-item{font-size:12px;font-weight:500;color:rgba(255,255,255,.45);padding:12px 14px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .15s;display:block;text-decoration:none;}
+.nav-item:hover{color:rgba(255,255,255,.8);}
+.nav-item.active{color:#fff;border-bottom-color:#2a7dd8;}
+
+/* ─── LAYOUT ─── */
+.main{max-width:1220px;margin:0 auto;padding:2rem 1.5rem;}
+.section{display:none;}
+.section.active{display:block;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;}
+
+/* ─── HERO ─── */
+.hero{background:var(--navy);border-radius:12px;padding:2rem;margin-bottom:1.5rem;display:grid;grid-template-columns:1fr 300px;gap:1.5rem;align-items:start;}
+.hero-ticker{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;color:var(--blue2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem;}
+.hero-name{font-size:28px;font-weight:700;color:#fff;margin-bottom:.25rem;}
+.hero-sub{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:1.25rem;display:flex;flex-wrap:wrap;gap:.5rem 1rem;}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.875rem;}
+.hstat{background:rgba(255,255,255,.05);border-radius:8px;padding:.75rem 1rem;border:1px solid rgba(255,255,255,.06);}
+.hstat-lbl{font-size:10px;font-weight:500;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;}
+.hstat-val{font-size:19px;font-weight:700;color:#fff;}
+.hstat-note{font-size:10px;color:rgba(255,255,255,.32);margin-top:2px;}
+.mission-box{background:rgba(42,125,216,.13);border:1px solid rgba(42,125,216,.28);border-radius:8px;padding:1rem 1.25rem;}
+.mission-lbl{font-size:10px;font-weight:600;color:rgba(42,125,216,.85);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
+.mission-box p{font-size:12px;color:rgba(255,255,255,.7);line-height:1.5;font-style:italic;}
+
+/* ─── CARD ─── */
+.card{background:var(--white);border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow);padding:1.25rem 1.5rem;margin-bottom:1.25rem;}
+.card-title{font-size:12px;font-weight:600;color:var(--g700);text-transform:uppercase;letter-spacing:.07em;margin-bottom:1rem;display:flex;align-items:center;gap:7px;}
+.ctdot{width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0;}
+
+/* ─── KV TABLE ─── */
+.kv{width:100%;border-collapse:collapse;}
+.kv tr{border-bottom:1px solid var(--border);}
+.kv tr:last-child{border-bottom:none;}
+.kv td{padding:7px 0;font-size:13px;vertical-align:top;}
+.kv td:first-child{color:var(--g700);width:48%;}
+.kv td:last-child{font-weight:500;color:var(--g900);text-align:right;}
+
+/* ─── PILLS ─── */
+.pill{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px;}
+.p-green{background:var(--teal-pale);color:var(--teal);}
+.p-blue{background:var(--blue-pale);color:var(--blue);}
+.p-amber{background:var(--amber-pale);color:var(--amber);}
+.p-red{background:var(--red-pale);color:var(--red);}
+.p-coral{background:var(--coral-pale);color:var(--coral);}
+.p-gray{background:var(--g50);color:var(--g700);}
+
+/* ─── INITIATIVES ─── */
+.init-card{background:var(--white);border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow);padding:1.25rem 1.5rem;margin-bottom:1rem;}
+.init-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:.75rem;}
+.init-num{width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'IBM Plex Mono',monospace;}
+.init-title{font-size:15px;font-weight:600;color:var(--g900);margin-bottom:4px;}
+.init-meta{display:flex;gap:5px;flex-wrap:wrap;}
+.init-body{font-size:13px;color:var(--g700);line-height:1.65;margin-bottom:.75rem;}
+.init-align{background:var(--blue-pale);border-radius:6px;padding:.75rem 1rem;margin-bottom:.75rem;}
+.init-align-lbl{font-size:10px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;}
+.init-align p{font-size:12px;color:#185fa8;line-height:1.55;}
+.init-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.itag{font-size:11px;font-weight:500;padding:3px 8px;border-radius:4px;background:var(--g50);color:var(--g700);border:1px solid var(--border);}
+
+/* ─── RISKS ─── */
+.risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;}
+.risk-card{border-radius:8px;padding:1rem 1.25rem;border-left:3px solid;}
+.r-high{background:var(--red-pale);border-color:var(--red);}
+.r-med{background:var(--amber-pale);border-color:var(--amber);}
+.risk-lbl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;}
+.r-high .risk-lbl{color:var(--red);}
+.r-med .risk-lbl{color:var(--amber);}
+.risk-title{font-size:13px;font-weight:600;color:var(--g900);margin-bottom:4px;}
+.risk-body{font-size:12px;color:var(--g700);line-height:1.5;}
+
+/* ─── ORG CHART ─── */
+.org-controls{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;flex-wrap:wrap;}
+.org-filter-btn{font-size:11px;font-weight:500;padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--white);color:var(--g700);cursor:pointer;transition:all .15s;}
+.org-filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.org-legend{display:flex;gap:1rem;margin-left:auto;flex-wrap:wrap;}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--g700);}
+.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+
+.org-tree{overflow-x:auto;padding-bottom:.5rem;}
+.org-level{display:flex;gap:1rem;justify-content:flex-start;align-items:flex-start;padding-left:1rem;margin-bottom:1rem;flex-wrap:wrap;}
+.org-tier-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--g400);margin-bottom:.5rem;padding-left:.25rem;}
+
+.org-person{
+  background:var(--white);border:1px solid var(--border);border-radius:10px;
+  padding:.875rem 1rem;min-width:190px;max-width:230px;cursor:pointer;
+  transition:box-shadow .15s,border-color .15s;position:relative;
+  box-shadow:var(--shadow);
+}
+.org-person:hover{box-shadow:0 4px 18px rgba(10,22,40,.12);border-color:var(--blue2);}
+.org-person .op-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-bottom:.5rem;}
+.op-name{font-size:13px;font-weight:600;color:var(--g900);margin-bottom:2px;}
+.op-title{font-size:11px;color:var(--g700);line-height:1.35;margin-bottom:6px;}
+.op-status{font-size:10px;font-weight:500;padding:2px 7px;border-radius:10px;display:inline-block;}
+.op-last{font-size:10px;color:var(--g400);margin-top:4px;}
+
+/* Status colors */
+.s-champion .org-person{border-left:3px solid var(--teal);}
+.s-champion .op-status{background:var(--teal-pale);color:var(--teal);}
+.s-champion .leg-dot,.s-champion-dot{background:var(--teal);}
+.s-target .org-person{border-left:3px solid var(--blue);}
+.s-target .op-status{background:var(--blue-pale);color:var(--blue);}
+.s-target-dot{background:var(--blue);}
+.s-warm .org-person{border-left:3px solid var(--amber);}
+.s-warm .op-status{background:var(--amber-pale);color:var(--amber);}
+.s-warm-dot{background:var(--amber);}
+.s-cold .org-person{border-left:3px solid var(--g200);}
+.s-cold .op-status{background:var(--g50);color:var(--g700);}
+.s-cold-dot{background:var(--g200);}
+.s-exec .org-person{border-left:3px solid var(--coral);}
+.s-exec .op-status{background:var(--coral-pale);color:var(--coral);}
+.s-exec-dot{background:var(--coral);}
+
+/* ─── MEDDPICC ─── */
+.medd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.medd-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:1rem;box-shadow:var(--shadow);}
+.medd-letter{font-size:22px;font-weight:800;color:var(--blue);font-family:'IBM Plex Mono',monospace;margin-bottom:3px;}
+.medd-name{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--g700);margin-bottom:8px;}
+.score-bar{height:5px;background:var(--g100);border-radius:3px;margin-bottom:5px;overflow:hidden;}
+.score-fill{height:100%;border-radius:3px;}
+.sf-low{background:var(--red);}
+.sf-mid{background:var(--amber);}
+.sf-high{background:var(--teal);}
+.medd-val{font-size:11px;font-weight:600;color:var(--g700);margin-bottom:5px;}
+.medd-desc{font-size:11px;color:var(--g700);line-height:1.5;}
+.overall-ring{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.25rem;}
+.score-ring{position:relative;width:72px;height:72px;flex-shrink:0;}
+.score-ring svg{transform:rotate(-90deg);}
+.ring-val{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--amber);}
+.ring-summary h3{font-size:15px;font-weight:600;color:var(--g900);margin-bottom:4px;}
+.ring-summary p{font-size:12px;color:var(--g700);line-height:1.55;}
+
+/* ─── VALUE HYPOTHESIS ─── */
+.value-core{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:10px;padding:1.5rem;margin-bottom:1.25rem;}
+.vc-lbl{font-size:10px;font-weight:600;color:rgba(42,125,216,.85);text-transform:uppercase;letter-spacing:.08em;margin-bottom:7px;}
+.value-core p{font-size:14px;color:rgba(255,255,255,.82);line-height:1.7;}
+.vpoint{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;margin-bottom:.75rem;display:flex;gap:1rem;box-shadow:var(--shadow);}
+.vp-num{width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-family:'IBM Plex Mono',monospace;}
+.vp-content h4{font-size:13px;font-weight:600;color:var(--g900);margin-bottom:4px;}
+.vp-content p{font-size:12px;color:var(--g700);line-height:1.6;margin-bottom:6px;}
+
+/* ─── COMPETITIVE ─── */
+.comp-row{display:grid;grid-template-columns:190px 1fr;gap:1rem;align-items:start;padding:1rem 0;border-bottom:1px solid var(--border);}
+.comp-row:last-child{border-bottom:none;}
+.comp-name{font-size:13px;font-weight:600;color:var(--g900);}
+.comp-role{font-size:11px;color:var(--g700);margin-top:2px;}
+.comp-items{display:flex;flex-direction:column;gap:3px;}
+.comp-item{display:flex;align-items:flex-start;gap:5px;font-size:12px;color:var(--g700);}
+.cico{flex-shrink:0;font-size:12px;margin-top:1px;}
+.cwin{color:var(--teal);}
+.cneut{color:var(--amber);}
+.cx{color:var(--red);}
+
+/* ─── OUTREACH ─── */
+.email-card{background:var(--white);border:1px solid var(--border);border-radius:10px;margin-bottom:1rem;overflow:hidden;box-shadow:var(--shadow);}
+.email-header{padding:1rem 1.25rem;cursor:pointer;display:flex;align-items:center;gap:1rem;user-select:none;}
+.email-header:hover{background:var(--g50);}
+.enum{width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;}
+.email-hdr-text{flex:1;}
+.email-to{font-size:13px;font-weight:600;color:var(--g900);}
+.email-angle{font-size:12px;color:var(--g700);margin-top:2px;}
+.echev{font-size:13px;color:var(--g400);transition:transform .2s;}
+.email-body{display:none;border-top:1px solid var(--border);padding:1.25rem;}
+.email-body.open{display:block;}
+.subj-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--g400);margin-bottom:3px;}
+.subj-line{font-size:13px;font-weight:600;color:var(--blue);margin-bottom:1rem;font-style:italic;}
+.email-content{font-size:12px;color:var(--g700);line-height:1.75;white-space:pre-line;margin-bottom:1rem;}
+.tt-btn{font-size:11px;font-weight:600;color:var(--blue);cursor:pointer;padding:.4rem .75rem;background:var(--blue-pale);border-radius:6px;display:inline-flex;align-items:center;gap:4px;margin-bottom:.75rem;border:none;}
+.tt-body{display:none;background:var(--g50);border-radius:6px;padding:1rem;font-size:12px;color:var(--g700);line-height:1.75;white-space:pre-line;}
+.tt-body.open{display:block;}
+
+/* ─── DEAL TABLE ─── */
+.deal-tbl{width:100%;border-collapse:collapse;}
+.deal-tbl th{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--g700);padding:8px 10px;background:var(--g50);border-bottom:1px solid var(--border);text-align:left;}
+.deal-tbl td{font-size:12px;padding:10px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.deal-tbl tr:last-child td{border-bottom:none;}
+.d-won{color:var(--teal);font-weight:600;}
+.d-lost{color:var(--red);font-weight:600;}
+.d-open{color:var(--blue);font-weight:600;}
+
+/* ─── FEED ─── */
+.feed-item{display:flex;gap:1rem;padding:.875rem 0;border-bottom:1px solid var(--border);}
+.feed-item:last-child{border-bottom:none;}
+.feed-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.feed-title{font-size:13px;font-weight:500;color:var(--g900);margin-bottom:2px;}
+.feed-desc{font-size:12px;color:var(--g700);line-height:1.5;}
+.feed-time{font-size:11px;color:var(--g400);margin-top:3px;}
+
+/* ─── ACTION GRID ─── */
+.act-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+.act-item{border-radius:8px;padding:.875rem 1rem;display:flex;align-items:flex-start;gap:.75rem;}
+.act-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:3px;}
+.act-text{font-size:12px;font-weight:500;color:var(--g900);}
+.act-sub{font-size:11px;color:var(--g400);margin-top:2px;}
+.act-1{background:var(--red-pale);}
+.act-d1{background:var(--red);}
+.act-2{background:var(--blue-pale);}
+.act-d2{background:var(--blue);}
+.act-3{background:var(--amber-pale);}
+.act-d3{background:var(--amber);}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;}
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .two-col,.three-col{grid-template-columns:1fr;}
+  .medd-grid{grid-template-columns:1fr 1fr;}
+  .risk-grid{grid-template-columns:1fr;}
+  .comp-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <span class="logo">Planview</span>
+  <span class="hdr-sep"></span>
+  <span class="hdr-acct">Franklin Templeton (Franklin Resources) — Account Plan</span>
+  <span class="hdr-badge">Active Customer</span>
+  <span class="hdr-date">Updated Apr 30, 2026</span>
+</header>
+
+<nav class="nav-bar">
+  <a class="nav-item active" onclick="nav('overview',this)">🏠 Overview</a>
+  <a class="nav-item" onclick="nav('initiatives',this)">🎯 Strategic Initiatives</a>
+  <a class="nav-item" onclick="nav('org',this)">👥 Org Chart</a>
+  <a class="nav-item" onclick="nav('meddpicc',this)">📊 MEDDPICC</a>
+  <a class="nav-item" onclick="nav('value',this)">💡 Value Hypothesis</a>
+  <a class="nav-item" onclick="nav('competitive',this)">⚔️ Competitive</a>
+  <a class="nav-item" onclick="nav('outreach',this)">📧 Outreach Playbook</a>
+  <a class="nav-item" onclick="nav('deals',this)">📅 Deal History</a>
+  <a class="nav-item" onclick="nav('feed',this)">📡 Live Feed</a>
+</nav>
+
+<main class="main">
+
+<!-- ═══════════════ OVERVIEW ═══════════════ -->
+<section id="s-overview" class="section active">
+
+  <div class="hero">
+    <div>
+      <div class="hero-ticker">NYSE: BEN · San Mateo, CA · Financial Services · ~10,000 employees · Account No. A-000667989</div>
+      <div class="hero-name">Franklin Templeton</div>
+      <div class="hero-sub">
+        <span>Franklin Resources, Inc.</span><span>Fortune 500 #467</span><span>Global 2000 #566</span><span>$1.74T AUM (Feb 2026)</span>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-lbl">Current ARR</div><div class="hstat-val">$488.9K</div><div class="hstat-note">Active since Dec 2023</div></div>
+        <div class="hstat"><div class="hstat-lbl">Active Products</div><div class="hstat-val">5</div><div class="hstat-note">E1, LeanKit, PP, TAH, Portfolios</div></div>
+        <div class="hstat"><div class="hstat-lbl">Next Renewal</div><div class="hstat-val">Dec 2028</div><div class="hstat-note">$3.13M renewal pipeline</div></div>
+        <div class="hstat"><div class="hstat-lbl">Expansion Target</div><div class="hstat-val">SPM + Anvi</div><div class="hstat-note">Anvi trial expired Apr 30</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="mission-box">
+        <div class="mission-lbl">Planview Mission</div>
+        <p>"Your mission is our mission. Planview is helping Franklin Templeton help clients manage investments with a global reach and deep expertise."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title"><span class="ctdot"></span>Company Profile</div>
+      <table class="kv">
+        <tr><td>Headquarters</td><td>1 Franklin Pkwy, San Mateo, CA 94403</td></tr>
+        <tr><td>NYSE Ticker</td><td>BEN</td></tr>
+        <tr><td>AUM (Feb 2026)</td><td>$1.74 Trillion</td></tr>
+        <tr><td>Annual Revenue</td><td>~$6.3B (FY2025)</td></tr>
+        <tr><td>Employees</td><td>~10,000 globally</td></tr>
+        <tr><td>Investment Professionals</td><td>1,500+ in 35+ countries</td></tr>
+        <tr><td>Key Subsidiary Risk</td><td>Western Asset Management (outflows)</td></tr>
+        <tr><td>Customer Fit (MadKudu)</td><td>90 / 100 — Very Good</td></tr>
+        <tr><td>Demandbase Predict</td><td>73 / 100</td></tr>
+        <tr><td>Competitive Tech (DB)</td><td>Smartsheet</td></tr>
+        <tr><td>Bombora Topics</td><td>PMO, Product Management</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="ctdot"></span>Planview Relationship</div>
+      <table class="kv">
+        <tr><td>Customer Since</td><td>December 26, 2023</td></tr>
+        <tr><td>Account No.</td><td>A-000667989</td></tr>
+        <tr><td>NetSuite ID</td><td>434766</td></tr>
+        <tr><td>Current ARR</td><td>$488,849.99</td></tr>
+        <tr><td>Total Renewal BRA</td><td>$626,160.01</td></tr>
+        <tr><td>CS Health Score</td><td><span class="pill p-amber">Amber</span></td></tr>
+        <tr><td>Account Priority</td><td><span class="pill p-red">P1 Proactive Expansion</span></td></tr>
+        <tr><td>Account Owner</td><td>Larry Bonham — AMS ENT Growth AE West</td></tr>
+        <tr><td>MSA Effective Date</td><td>December 30, 2023 (Delaware)</td></tr>
+        <tr><td>Payment Terms</td><td>NET 45 · Annual Billing · Portal</td></tr>
+        <tr><td>PORequired</td><td>Yes</td></tr>
+        <tr><td>Data Center</td><td>E1 AWS Oregon, US</td></tr>
+        <tr><td>Guardian Status</td><td><span class="pill p-amber">Not Reviewed</span></td></tr>
+        <tr><td>3 Outstanding Invoices</td><td><span class="pill p-red">Resolve Before Expansion</span></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ctdot"></span>Active Products &amp; Seat Counts</div>
+    <div class="three-col" style="margin-bottom:0;">
+      <div style="background:var(--blue-pale);border-radius:8px;padding:1rem;">
+        <div style="font-size:10px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">EnterpriseOne (E1)</div>
+        <div style="font-size:24px;font-weight:700;color:var(--navy);">851</div>
+        <div style="font-size:11px;color:var(--g700);margin-top:2px;">Subscription seats · Active</div>
+      </div>
+      <div style="background:var(--teal-pale);border-radius:8px;padding:1rem;">
+        <div style="font-size:10px;font-weight:600;color:var(--teal);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">LeanKit</div>
+        <div style="font-size:24px;font-weight:700;color:var(--navy);">769</div>
+        <div style="font-size:11px;color:var(--g700);margin-top:2px;">Subscription seats · Active</div>
+      </div>
+      <div style="background:var(--amber-pale);border-radius:8px;padding:1rem;">
+        <div style="font-size:10px;font-weight:600;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Projectplace</div>
+        <div style="font-size:24px;font-weight:700;color:var(--navy);">769</div>
+        <div style="font-size:11px;color:var(--g700);margin-top:2px;">Subscription seats · Active</div>
+      </div>
+      <div style="background:var(--g50);border-radius:8px;padding:1rem;">
+        <div style="font-size:10px;font-weight:600;color:var(--g700);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Tasktop Hub</div>
+        <div style="font-size:24px;font-weight:700;color:var(--navy);">3</div>
+        <div style="font-size:11px;color:var(--g700);margin-top:2px;">Subscription seats · Active</div>
+      </div>
+      <div style="background:var(--coral-pale);border-radius:8px;padding:1rem;grid-column:span 2;">
+        <div style="font-size:10px;font-weight:600;color:var(--coral);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Portfolios Flex (SPM)</div>
+        <div style="font-size:24px;font-weight:700;color:var(--navy);">309 <span style="font-size:13px;font-weight:500;color:var(--coral);">Portfolio Mgrs</span> + 1,500 <span style="font-size:13px;font-weight:500;color:var(--coral);">Team Members</span></div>
+        <div style="font-size:11px;color:var(--g700);margin-top:2px;">Full Users (309) · Team Members (750 now, 750 ramping) · Sys Admins (10) · Requestors (80) · Active</div>
+      </div>
+      <div style="background:var(--red-pale);border-radius:8px;padding:1rem;border:1px dashed var(--red);">
+        <div style="font-size:10px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Planview Anvi AI</div>
+        <div style="font-size:24px;font-weight:700;color:var(--navy);">Trial</div>
+        <div style="font-size:11px;color:var(--red);margin-top:2px;">Trial expired Apr 30, 2026 — Re-engage now</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ctdot"></span>Immediate Action Items</div>
+    <div class="act-grid">
+      <div class="act-item act-1"><div class="act-dot act-d1"></div><div><div class="act-text">Re-engage Anvi AI — trial expired today</div><div class="act-sub">Contact: Vasundhara Chetluru (Head of AI Platform) · Closed Lost Apr 30</div></div></div>
+      <div class="act-item act-1"><div class="act-dot act-d1"></div><div><div class="act-text">Close "Add Full Users" expansion ($134K)</div><div class="act-sub">Stage 4 Negotiate · Close date May 21, 2026</div></div></div>
+      <div class="act-item act-2"><div class="act-dot act-d2"></div><div><div class="act-text">Engage Dana Jackson (CIO) on SPM expansion</div><div class="act-sub">CIO in CRM — no recent activity logged · Primary IT decision maker</div></div></div>
+      <div class="act-item act-2"><div class="act-dot act-d2"></div><div><div class="act-text">Leverage Melissa Court (SVP, Office of CIO)</div><div class="act-sub">Last active Aug 2023 · Re-warm as champion for SPM motion</div></div></div>
+      <div class="act-item act-3"><div class="act-dot act-d3"></div><div><div class="act-text">Engage Dante Gerochi (VP Technology PMO)</div><div class="act-sub">Last active Aug 2025 · Key PMO champion candidate for SPM governance</div></div></div>
+      <div class="act-item act-3"><div class="act-dot act-d3"></div><div><div class="act-text">Request CSM Guardian Review (currently Not Reviewed)</div><div class="act-sub">CS Health: Amber · 3 outstanding invoices need resolution</div></div></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════ STRATEGIC INITIATIVES ═══════════════ -->
+<section id="s-initiatives" class="section">
+
+  <div class="init-card">
+    <div class="init-header">
+      <div class="init-num">1</div>
+      <div>
+        <div class="init-title">Agentic AI Enterprise Deployment — Wand AI Partnership</div>
+        <div class="init-meta"><span class="pill p-red">Board Priority</span><span class="pill p-blue">Active 2025–2026</span></div>
+      </div>
+    </div>
+    <div class="init-body">Franklin Templeton announced a multi-year strategic partnership with Wand AI in November 2025, deploying agentic AI across its global platform. Head of AI Platform Vasundhara Chetluru confirmed enterprise-wide rollout in 2026 spanning investment research, operations, and transformative initiatives — underpinned by rigorous governance frameworks. By 2026, Wand-powered agents are targeted for the majority of enterprise workflows. <a href="https://investors.franklinresources.com/news-center/press-releases/press-release-details/2025/Franklin-Templeton-and-Wand-AI-Forge-Multi-Year-Strategic-Partnership-to-Advance-Agentic-AI-in-Asset-Management/default.aspx" target="_blank" style="color:var(--blue);">→ Source: BusinessWire Nov 2025</a></div>
+    <div class="init-align"><div class="init-align-lbl">Planview Alignment</div><p>100+ AI agents deployed across regulated financial workflows without portfolio governance creates compliance risk. Planview Anvi AI and the Portfolios layer provide the governance framework that makes this agentic deployment defensible — tracking which AI initiatives deliver measurable value vs. consuming resources without outcomes. The Anvi trial that just expired is the proof-of-concept; re-engagement should be framed around governing the Wand deployment specifically.</p></div>
+    <div class="init-tags"><span class="itag">Planview Anvi AI</span><span class="itag">Portfolios (SPM)</span><span class="itag">AI Governance</span><span class="itag">Portfolio ROI</span></div>
+  </div>
+
+  <div class="init-card">
+    <div class="init-header">
+      <div class="init-num">2</div>
+      <div>
+        <div class="init-title">Intelligence Hub — Microsoft Azure AI Distribution Platform</div>
+        <div class="init-meta"><span class="pill p-red">CEO Mandate</span><span class="pill p-blue">Launched 2026</span></div>
+      </div>
+    </div>
+    <div class="init-body">CEO Jenny Johnson launched Intelligence Hub in 2026 — a modular, AI-driven distribution platform built on Microsoft Azure. This is the flagship output of Franklin Templeton's multi-year collaboration with Microsoft (announced April 2024), creating a composable multi-layer AI architecture to embed intelligence across workflows, enhance sales and marketing productivity, and improve the client experience. Jeff Masom (Head of Distribution) is a key program sponsor. <a href="https://investors.franklinresources.com/news-center/press-releases/press-release-details/2026/New-Intelligence-Hub-Marks-Expansion-of-Franklin-Templetons-Strategic-Collaboration-with-Microsoft/default.aspx" target="_blank" style="color:var(--blue);">→ Source: Franklin Resources 2026</a></div>
+    <div class="init-align"><div class="init-align-lbl">Planview Alignment</div><p>Intelligence Hub is a CEO-level program with resource implications across technology, distribution, and marketing. Without portfolio governance above it, Franklin Templeton cannot answer which workstreams are on track, over-resourced, or delivering against the stated client engagement goals. Planview connects the Intelligence Hub program roadmap to measurable outcomes reportable at the board level.</p></div>
+    <div class="init-tags"><span class="itag">Portfolios (SPM)</span><span class="itag">Program Governance</span><span class="itag">Outcome Tracking</span><span class="itag">E1 (existing)</span></div>
+  </div>
+
+  <div class="init-card">
+    <div class="init-header">
+      <div class="init-num">3</div>
+      <div>
+        <div class="init-title">Alternatives Expansion — $280B AUM, Apera + 250 Digital Acquisitions</div>
+        <div class="init-meta"><span class="pill p-amber">M&amp;A Driven</span><span class="pill p-blue">Closing Q2 2026</span></div>
+      </div>
+    </div>
+    <div class="init-body">Franklin Templeton has grown alternatives AUM to $280B as of March 2026 through strategic acquisitions including Apera Asset Management (private credit) and 250 Digital/CoinFund (crypto, closing Q2 2026). The newly formed Franklin Crypto unit will be led by Christopher Perkins and Seth Ginns, reporting to Sandy Kaul (Head of Innovation). Each acquisition brings new teams, systems, and competing investment priorities that must be integrated. <a href="https://www.pymnts.com/acquisitions/2026/franklin-templeton-aims-to-strengthen-digital-asset-capabilities-with-250-digital-acquisition/" target="_blank" style="color:var(--blue);">→ Source: PYMNTS Apr 2026</a></div>
+    <div class="init-align"><div class="init-align-lbl">Planview Alignment</div><p>Post-acquisition integration is a classic portfolio governance failure point. Without a unified portfolio layer, acquired teams operate in silos with separate tools and separate priorities — no shared visibility into resource conflicts between the legacy Franklin business and new platforms. Planview provides the integration governance layer that prevents acquired initiatives from destabilizing the existing portfolio.</p></div>
+    <div class="init-tags"><span class="itag">Portfolios (SPM)</span><span class="itag">M&amp;A Integration</span><span class="itag">Resource Governance</span><span class="itag">Scenario Planning</span></div>
+  </div>
+
+  <div class="init-card">
+    <div class="init-header">
+      <div class="init-num">4</div>
+      <div>
+        <div class="init-title">Global Client Group Restructuring — Simpler Connected Operating Model</div>
+        <div class="init-meta"><span class="pill p-amber">3 New Leaders Mar 2026</span></div>
+      </div>
+    </div>
+    <div class="init-body">In March 2026, Franklin Templeton restructured its Global Client Group — appointing Brett Mossman (Head of US Product), Lyenda Delp (Head of Global Insurance and Institutional Asset Solutions), and elevating Kim Roy to COO of GCG. The stated goal is a "simpler, more connected model designed to accelerate growth." Three new leaders, shared resources, and competing program portfolios create classic SPM urgency. <a href="https://investors.franklinresources.com/news-center/press-releases/press-release-details/2026/Franklin-Templeton-Strengthens-Global-Client-Group-Leadership-with-Key-Appointments-/default.aspx" target="_blank" style="color:var(--blue);">→ Source: Franklin Resources Mar 2026</a></div>
+    <div class="init-align"><div class="init-align-lbl">Planview Alignment</div><p>Three new senior GCG leaders with competing mandates and shared resources is a textbook SPM trigger. Without portfolio visibility, the restructuring creates "all priorities are critical" dynamics. Planview gives new leadership a structured basis for trade-off decisions grounded in agreed business value criteria from day one, rather than after the first resource conflict surfaces.</p></div>
+    <div class="init-tags"><span class="itag">SPM / Portfolios</span><span class="itag">Change Governance</span><span class="itag">Resource Trade-offs</span><span class="itag">Value-Based Prioritization</span></div>
+  </div>
+
+  <div class="init-card">
+    <div class="init-header">
+      <div class="init-num">5</div>
+      <div>
+        <div class="init-title">Benji Platform — Institutional Tokenization and Digital Assets</div>
+        <div class="init-meta"><span class="pill p-green">Strategic Differentiator</span><span class="pill p-blue">Multi-Year NPD</span></div>
+      </div>
+    </div>
+    <div class="init-body">Franklin Templeton's Benji platform is the company's flagship blockchain product — a tokenized money market fund now used as off-exchange collateral via Binance partnership (Feb 2026). $1.8B in digital assets under management as of Dec 2025. This is a complex multi-year NPD program requiring coordination across Digital Assets, Technology, Legal, Compliance, and Operations globally. Roger Bayston (Head of Digital Assets) is the program sponsor. <a href="https://platformafrica.com/2026/02/16/binance-franklin-templeton-advance-strategic-collaboration-with-institutional-collateral-program/" target="_blank" style="color:var(--blue);">→ Source: Platform Africa Feb 2026</a></div>
+    <div class="init-align"><div class="init-align-lbl">Planview Alignment</div><p>The Benji/digital assets platform competes for Technology, Legal, and Compliance resources alongside Intelligence Hub, Wand AI, and acquisition integration. Without portfolio governance, trade-off decisions about resourcing Benji vs. other programs are made politically. Planview Portfolios provides the unified resource view that makes those decisions defensible and fast.</p></div>
+    <div class="init-tags"><span class="itag">Portfolios (SPM)</span><span class="itag">NPD Governance</span><span class="itag">Resource Modeling</span><span class="itag">E1 (existing)</span></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ctdot"></span>Business Risks Connected to Planview Urgency</div>
+    <div class="risk-grid">
+      <div class="risk-card r-high"><div class="risk-lbl">High Risk</div><div class="risk-title">Western Asset Management AUM Outflows</div><div class="risk-body">$34B+ net outflows from Western Asset Management in Q1 2025 alone. Ongoing crisis consumes executive attention while the firm simultaneously executes 5 major strategic programs. Classic "all initiatives are critical" dynamic — the most urgent context for SPM prioritization governance.</div></div>
+      <div class="risk-card r-high"><div class="risk-lbl">High Risk</div><div class="risk-title">GCG Leadership Transition Risk</div><div class="risk-body">Three major GCG appointments in March 2026. New leaders inheriting complex program portfolios without institutional context. Without portfolio governance, the first 90-day period defaults to political resource allocation rather than value-based trade-offs.</div></div>
+      <div class="risk-card r-med"><div class="risk-lbl">Medium Risk</div><div class="risk-title">M&amp;A Integration Complexity</div><div class="risk-body">Two acquisitions (Apera, 250 Digital) closing Q2 2026 while Intelligence Hub and Wand AI deployments are in progress. Simultaneous integration without a unified portfolio layer creates resource conflicts that are invisible until they cause execution failures.</div></div>
+      <div class="risk-card r-med"><div class="risk-lbl">Medium Risk</div><div class="risk-title">AI Governance Credibility in Regulated Environment</div><div class="risk-body">Deploying 100+ Wand AI agents across investment research and operations workflows without a portfolio governance layer creates regulatory and compliance exposure. SEC oversight of AI in investment functions requires traceable governance decisions — exactly what Planview Anvi provides.</div></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════ ORG CHART ═══════════════ -->
+<section id="s-org" class="section">
+
+  <div class="card" style="margin-bottom:1rem;">
+    <div class="card-title"><span class="ctdot"></span>Franklin Templeton — Org Chart</div>
+    <div class="org-controls">
+      <span style="font-size:12px;color:var(--g700);">Filter:</span>
+      <button class="org-filter-btn active" onclick="orgFilter('all',this)">All</button>
+      <button class="org-filter-btn" onclick="orgFilter('exec',this)">Execs only</button>
+      <button class="org-filter-btn" onclick="orgFilter('it',this)">IT / Technology</button>
+      <button class="org-filter-btn" onclick="orgFilter('pmo',this)">PMO / Operations</button>
+      <button class="org-filter-btn" onclick="orgFilter('active',this)">Active contacts</button>
+      <div class="org-legend">
+        <span class="leg-item"><span class="leg-dot s-exec-dot"></span>Executive / Economic Buyer</span>
+        <span class="leg-item"><span class="leg-dot s-champion-dot"></span>Champion</span>
+        <span class="leg-item"><span class="leg-dot s-target-dot"></span>Target / Warm</span>
+        <span class="leg-item"><span class="leg-dot s-cold-dot"></span>Cold / Re-engage</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIER 0 — C-SUITE -->
+  <div style="margin-bottom:.5rem;"><div class="org-tier-label">C-Suite / Co-Presidents</div></div>
+  <div class="org-level" id="tier-exec">
+
+    <div class="s-exec" data-tags="exec">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--coral-pale);color:var(--coral);">JJ</div>
+        <div class="op-name">Jenny Johnson</div>
+        <div class="op-title">President &amp; CEO, Franklin Templeton</div>
+        <div class="op-status">Executive Sponsor Level</div>
+        <div class="op-last">Avoid cold outreach — engage via referral only</div>
+      </div>
+    </div>
+
+    <div class="s-exec" data-tags="exec">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--coral-pale);color:var(--coral);">MN</div>
+        <div class="op-name">Matthew Nicholls</div>
+        <div class="op-title">Co-President, COO &amp; CFO</div>
+        <div class="op-status">Budget Authority (C-Suite)</div>
+        <div class="op-last">Controls technology and operational budgets</div>
+      </div>
+    </div>
+
+    <div class="s-exec" data-tags="exec">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--coral-pale);color:var(--coral);">DG</div>
+        <div class="op-name">Daniel Gamba</div>
+        <div class="op-title">Co-President &amp; Chief Commercial Officer (Oct 2025)</div>
+        <div class="op-status">Executive (New Oct 2025)</div>
+        <div class="op-last">Former President, Northern Trust Asset Mgmt</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TIER 1 — EVP / Operations & Technology -->
+  <div style="margin-top:1rem;margin-bottom:.5rem;"><div class="org-tier-label">EVP / Operations &amp; Technology Leadership</div></div>
+  <div class="org-level" id="tier-evp">
+
+    <div class="s-target" data-tags="exec it active">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--blue-pale);color:var(--blue);">AS</div>
+        <div class="op-name">Alok Sethi</div>
+        <div class="op-title">EVP, Head of Global Operations</div>
+        <div class="op-status">Economic Buyer Target</div>
+        <div class="op-last">Last active: Sep 11, 2025 · In CRM ✓</div>
+      </div>
+    </div>
+
+    <div class="s-target" data-tags="exec it active">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--blue-pale);color:var(--blue);">JB</div>
+        <div class="op-name">Joseph Boerio</div>
+        <div class="op-title">EVP, Chief Risk &amp; Transformation Officer</div>
+        <div class="op-status">Transformation Buyer</div>
+        <div class="op-last">Last active: Nov 3, 2023 · In CRM ✓</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TIER 2 — CIO / AI Platform -->
+  <div style="margin-top:1rem;margin-bottom:.5rem;"><div class="org-tier-label">CIO / AI Platform — Direct Planview Entry Points</div></div>
+  <div class="org-level" id="tier-cio">
+
+    <div class="s-target" data-tags="it pmo">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--blue-pale);color:var(--blue);">DJ</div>
+        <div class="op-name">Dana Jackson</div>
+        <div class="op-title">Chief Information Officer (CIO)</div>
+        <div class="op-status">Key IT Target</div>
+        <div class="op-last">In CRM ✓ · No recent activity — re-engage now</div>
+      </div>
+    </div>
+
+    <div class="s-champion" data-tags="it active">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--teal-pale);color:var(--teal);">VC</div>
+        <div class="op-name">Vasundhara Chetluru</div>
+        <div class="op-title">Head of AI Platform</div>
+        <div class="op-status">Anvi AI Champion</div>
+        <div class="op-last">Wand AI program sponsor · Re-engage for Anvi trial</div>
+      </div>
+    </div>
+
+    <div class="s-target" data-tags="it pmo active">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--blue-pale);color:var(--blue);">MC</div>
+        <div class="op-name">Melissa Court</div>
+        <div class="op-title">SVP, Office of the CIO</div>
+        <div class="op-status">CIO Office Champion</div>
+        <div class="op-last">Last active: Aug 30, 2023 · In CRM ✓ · Re-warm</div>
+      </div>
+    </div>
+
+    <div class="s-target" data-tags="it active">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--blue-pale);color:var(--blue);">KL</div>
+        <div class="op-name">Karen Lewis</div>
+        <div class="op-title">VP-IT, Office of the CIO</div>
+        <div class="op-status">IT Governance Target</div>
+        <div class="op-last">Last active: Aug 3, 2023 · In CRM ✓</div>
+      </div>
+    </div>
+
+    <div class="s-target" data-tags="it active">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--blue-pale);color:var(--blue);">OH</div>
+        <div class="op-name">Oded Haner</div>
+        <div class="op-title">SVP Technology</div>
+        <div class="op-status">Tech Leadership Target</div>
+        <div class="op-last">Last active: Nov 9, 2023 · In CRM ✓</div>
+      </div>
+    </div>
+
+    <div class="s-target" data-tags="it active">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--blue-pale);color:var(--blue);">RG</div>
+        <div class="op-name">Rajat Gupta</div>
+        <div class="op-title">SVP, Technology for Data &amp; Analytics</div>
+        <div class="op-status">Data Platform Target</div>
+        <div class="op-last">Last active: May 8, 2023 · In CRM ✓</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TIER 3 — PMO / Technology Operations -->
+  <div style="margin-top:1rem;margin-bottom:.5rem;"><div class="org-tier-label">PMO / Technology Operations — Planview Platform Users</div></div>
+  <div class="org-level" id="tier-pmo">
+
+    <div class="s-champion" data-tags="pmo it active">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--teal-pale);color:var(--teal);">DG</div>
+        <div class="op-name">Dante Gerochi</div>
+        <div class="op-title">Vice President, Technology PMO</div>
+        <div class="op-status">PMO Champion</div>
+        <div class="op-last">Last active: Aug 22, 2025 · In CRM ✓ · Key contact</div>
+      </div>
+    </div>
+
+    <div class="s-champion" data-tags="pmo it active">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--teal-pale);color:var(--teal);">ML</div>
+        <div class="op-name">Martin Little</div>
+        <div class="op-title">PMO Director (UK)</div>
+        <div class="op-status">Active Champion</div>
+        <div class="op-last">Last active: Apr 29, 2026 · Most recent contact</div>
+      </div>
+    </div>
+
+    <div class="s-target" data-tags="pmo it active">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--blue-pale);color:var(--blue);">RK</div>
+        <div class="op-name">Ricky Kapur</div>
+        <div class="op-title">Director, Investment Management PMO</div>
+        <div class="op-status">IM PMO Target</div>
+        <div class="op-last">Last active: Jun 14, 2024 · In CRM ✓</div>
+      </div>
+    </div>
+
+    <div class="s-target" data-tags="pmo it active">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--blue-pale);color:var(--blue);">QM</div>
+        <div class="op-name">Quynh Mai</div>
+        <div class="op-title">Enterprise Architect</div>
+        <div class="op-status">Architecture Target</div>
+        <div class="op-last">Last active: Nov 19, 2023 · In CRM ✓</div>
+      </div>
+    </div>
+
+    <div class="s-target" data-tags="pmo it active">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--blue-pale);color:var(--blue);">HZ</div>
+        <div class="op-name">Hazel Zecha</div>
+        <div class="op-title">Enterprise Architect</div>
+        <div class="op-status">Architecture Target</div>
+        <div class="op-last">Last active: Apr 24, 2023 · In CRM ✓</div>
+      </div>
+    </div>
+
+    <div class="s-target" data-tags="pmo active">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--blue-pale);color:var(--blue);">DT</div>
+        <div class="op-name">DeAnna Turner</div>
+        <div class="op-title">Procurement, Vendor Management</div>
+        <div class="op-status">Procurement Contact</div>
+        <div class="op-last">Last active: Dec 30, 2024 · In CRM ✓</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TIER 4 — Active Delivery Contacts -->
+  <div style="margin-top:1rem;margin-bottom:.5rem;"><div class="org-tier-label">Active Delivery Contacts — Most Recently Engaged</div></div>
+  <div class="org-level" id="tier-delivery">
+
+    <div class="s-champion" data-tags="it active">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--teal-pale);color:var(--teal);">SP</div>
+        <div class="op-name">Sajith P. Kottilil</div>
+        <div class="op-title">Title TBC</div>
+        <div class="op-status">Active — Apr 2026</div>
+        <div class="op-last">Last active: Apr 1, 2026 · In CRM ✓</div>
+      </div>
+    </div>
+
+    <div class="s-target" data-tags="it active">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--blue-pale);color:var(--blue);">RB</div>
+        <div class="op-name">Ryan Burke</div>
+        <div class="op-title">Senior Business Analyst</div>
+        <div class="op-status">Active — Mar 2026</div>
+        <div class="op-last">Last active: Mar 30, 2026 · In CRM ✓</div>
+      </div>
+    </div>
+
+    <div class="s-target" data-tags="it active">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--blue-pale);color:var(--blue);">YG</div>
+        <div class="op-name">Yolanda Gomez</div>
+        <div class="op-title">Lead Software Engineer</div>
+        <div class="op-status">Active — Mar 2026</div>
+        <div class="op-last">Last active: Mar 17, 2026 · In CRM ✓</div>
+      </div>
+    </div>
+
+    <div class="s-cold" data-tags="it pmo">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--g50);color:var(--g700);">DM</div>
+        <div class="op-name">Dawn Milam</div>
+        <div class="op-title">Senior Systems Analyst</div>
+        <div class="op-status">Re-engage</div>
+        <div class="op-last">Last active: Feb 20, 2025 · In CRM ✓</div>
+      </div>
+    </div>
+
+    <div class="s-cold" data-tags="it">
+      <div class="org-person">
+        <div class="op-avatar" style="background:var(--g50);color:var(--g700);">DA</div>
+        <div class="op-name">Dana Jackson</div>
+        <div class="op-title">CIO (see above)</div>
+        <div class="op-status">Re-engage — Priority</div>
+        <div class="op-last">CIO in CRM · No activity logged yet</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card" style="margin-top:1.25rem;">
+    <div class="card-title"><span class="ctdot"></span>Org Chart Notes</div>
+    <p style="font-size:12px;color:var(--g700);line-height:1.65;">Based on Planview Salesforce CRM records and public sources (LinkedIn, press releases, Franklin Resources investor relations). <strong>Dana Jackson (CIO)</strong> is the primary IT economic buyer — confirmed in CRM with no recent logged activity, making re-engagement urgent. <strong>Melissa Court (SVP, Office of the CIO)</strong> is the natural champion bridge between the CIO and Planview platform decisions. <strong>Dante Gerochi (VP Technology PMO)</strong> is the most active senior PMO contact (Aug 2025) and the strongest internal champion candidate for the SPM expansion motion. The Technology PMO reporting to both Gerochi and through the CIO office creates a clean governance conversation path from platform user to executive sponsor.</p>
+  </div>
+
+</section>
+
+<!-- ═══════════════ MEDDPICC ═══════════════ -->
+<section id="s-meddpicc" class="section">
+
+  <div class="card">
+    <div class="overall-ring">
+      <div class="score-ring">
+        <svg width="72" height="72" viewBox="0 0 72 72">
+          <circle cx="36" cy="36" r="28" fill="none" stroke="#d3d1c7" stroke-width="6"/>
+          <circle cx="36" cy="36" r="28" fill="none" stroke="#ba7517" stroke-width="6"
+            stroke-dasharray="175.9" stroke-dashoffset="94" stroke-linecap="round"/>
+        </svg>
+        <div class="ring-val">46</div>
+      </div>
+      <div class="ring-summary">
+        <h3>Overall MEDDPICC Score: 46 / 80</h3>
+        <p>Deal in early expansion stages. Confirmed CIO (Dana Jackson) and SVP Office of the CIO (Melissa Court) in CRM, plus Dante Gerochi as active PMO champion, are significant upgrades to the previous assessment. Critical remaining gaps: confirmed Economic Buyer access at Sethi/Boerio level, and a defined Decision Process for the SPM expansion motion following the GCG restructuring.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="medd-grid">
+    <div class="medd-card">
+      <div class="medd-letter">M</div>
+      <div class="medd-name">Metrics</div>
+      <div class="score-bar"><div class="score-fill sf-high" style="width:70%;"></div></div>
+      <div class="medd-val">7 / 10</div>
+      <div class="medd-desc">$488K ARR proves value. Wand AI deployment creates quantified AI investment — perfect ROI hook. Western Asset outflows and GCG restructuring create urgency. Anvi trial data can seed the ROI case with Chetluru.</div>
+    </div>
+    <div class="medd-card">
+      <div class="medd-letter">E</div>
+      <div class="medd-name">Economic Buyer</div>
+      <div class="score-bar"><div class="score-fill sf-mid" style="width:45%;"></div></div>
+      <div class="medd-val">5 / 10</div>
+      <div class="medd-desc">Dana Jackson (CIO) and Alok Sethi (EVP Ops) are the logical economic buyers — both in CRM. Melissa Court (SVP Office of CIO) is the champion bridge. No confirmed access for SPM expansion conversation yet — gap to close.</div>
+    </div>
+    <div class="medd-card">
+      <div class="medd-letter">D</div>
+      <div class="medd-name">Decision Criteria</div>
+      <div class="score-bar"><div class="score-fill sf-mid" style="width:40%;"></div></div>
+      <div class="medd-val">4 / 10</div>
+      <div class="medd-desc">No formal SPM evaluation initiated. AI governance emphasis (Wand, Intelligence Hub) is a natural criteria anchor. Need to establish evaluation framework with Chetluru, Gerochi, or Dana Jackson as entry point.</div>
+    </div>
+    <div class="medd-card">
+      <div class="medd-letter">D</div>
+      <div class="medd-name">Decision Process</div>
+      <div class="score-bar"><div class="score-fill sf-low" style="width:30%;"></div></div>
+      <div class="medd-val">3 / 10</div>
+      <div class="medd-desc">No expansion decision process mapped post-GCG restructuring. PORequired: Yes. MSA active since Dec 2023, NET 45. Amendment via existing contract is the commercial path. 3 outstanding invoices must be resolved first.</div>
+    </div>
+    <div class="medd-card">
+      <div class="medd-letter">I</div>
+      <div class="medd-name">Identify Pain</div>
+      <div class="score-bar"><div class="score-fill sf-high" style="width:75%;"></div></div>
+      <div class="medd-val">8 / 10</div>
+      <div class="medd-desc">Pain confirmed: 100+ AI agents without governance; GCG restructuring creating competing priorities; two acquisitions requiring integration; Western Asset crisis consuming attention. Classic "all initiatives critical" environment.</div>
+    </div>
+    <div class="medd-card">
+      <div class="medd-letter">C</div>
+      <div class="medd-name">Champion</div>
+      <div class="score-bar"><div class="score-fill sf-mid" style="width:55%;"></div></div>
+      <div class="medd-val">6 / 10</div>
+      <div class="medd-desc">Vasundhara Chetluru is Anvi champion. Dante Gerochi (VP Tech PMO, last active Aug 2025) is SPM champion candidate. Melissa Court (SVP Office of CIO) is the bridge to Dana Jackson. Martin Little is most recently active contact (Apr 2026).</div>
+    </div>
+    <div class="medd-card">
+      <div class="medd-letter">C</div>
+      <div class="medd-name">Competition</div>
+      <div class="score-bar"><div class="score-fill sf-high" style="width:70%;"></div></div>
+      <div class="medd-val">7 / 10</div>
+      <div class="medd-desc">Demandbase signals Smartsheet as primary competitive tech. Microsoft Azure deep footprint (Intelligence Hub) creates Copilot narrative risk. Planview has incumbency with 851+ E1 seats. No known RFP that would trigger competitive evaluation.</div>
+    </div>
+    <div class="medd-card">
+      <div class="medd-letter">P</div>
+      <div class="medd-name">Paper Process</div>
+      <div class="score-bar"><div class="score-fill sf-mid" style="width:50%;"></div></div>
+      <div class="medd-val">6 / 10</div>
+      <div class="medd-desc">MSA active Dec 2023. PORequired: Yes. NET 45. Billing: Portal. SPM expansion follows established amendment path. Note: 3 outstanding invoices flagged in Salesforce — resolve before expansion commercial conversation.</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════ VALUE HYPOTHESIS ═══════════════ -->
+<section id="s-value" class="section">
+
+  <div class="value-core">
+    <div class="vc-lbl">Core Value Hypothesis</div>
+    <p>Franklin Templeton is deploying 100+ AI agents, launching a flagship AI distribution platform (Intelligence Hub), completing two acquisitions, and restructuring its Global Client Group — simultaneously in 2026. Without a unified portfolio governance layer, the firm cannot answer the question its board and CFO are already asking: which of these investments is delivering measurable value, and what gets funded next? Planview uniquely connects Franklin Templeton's AI platform ambitions, acquisition integration requirements, and GCG transformation to a governance framework that makes investment decisions defensible at the board level.</p>
+  </div>
+
+  <div class="vpoint">
+    <div class="vp-num">01</div>
+    <div class="vp-content">
+      <h4>Making the Agentic AI Investment Defensible at Board Level</h4>
+      <p>Franklin Templeton is deploying Wand AI agents across every major enterprise function in 2026 — a significant technology investment with regulatory implications in an SEC-regulated environment. Without portfolio governance, there is no structured way to answer the board question: which AI deployments delivered measurable value, and what comes next? Planview Portfolios and Anvi AI create the governance framework that turns AI deployment from a cost center into a board-reportable strategic asset — traceable outcomes tied to agreed business value criteria. The Anvi trial that just expired is the proof-of-concept; a paid deployment structured around the Wand AI program portfolio is the natural next step with Vasundhara Chetluru.</p>
+      <div class="init-tags"><span class="itag">Planview Anvi AI</span><span class="itag">Portfolios (SPM)</span><span class="itag">AI Governance</span><span class="itag">Portfolio ROI</span></div>
+    </div>
+  </div>
+
+  <div class="vpoint">
+    <div class="vp-num">02</div>
+    <div class="vp-content">
+      <h4>Resource Governance Across Five Simultaneous Strategic Programs</h4>
+      <p>Intelligence Hub, Wand AI deployment, Apera integration, 250 Digital/Franklin Crypto integration, and GCG restructuring are all competing for the same engineering, technology, and operations resources in 2026. Without a unified portfolio layer, resource allocation is politically negotiated. Planview gives Alok Sethi, Dana Jackson, and Matthew Nicholls the scenario planning capability to model trade-offs between programs in real time — so resource decisions are defensible at the executive level rather than resolved in meetings based on seniority.</p>
+      <div class="init-tags"><span class="itag">Scenario Planning</span><span class="itag">Resource Capacity Modeling</span><span class="itag">Dynamic Prioritization</span></div>
+    </div>
+  </div>
+
+  <div class="vpoint">
+    <div class="vp-num">03</div>
+    <div class="vp-content">
+      <h4>CIO Office Credibility — From Subjective Prioritization to Defensible Data</h4>
+      <p>Dana Jackson (CIO) and Melissa Court (SVP, Office of the CIO) face the classic IT credibility problem: when every business unit argues their IT program is the most critical, resource allocation defaults to organizational influence rather than business value data. That is what undermines IT credibility with the business. Planview's portfolio governance framework, already in use within Franklin Templeton's technology operations, gives the CIO Office a structured basis for resource allocation decisions that holds up under scrutiny — grounded in agreed strategic criteria rather than political negotiation.</p>
+      <div class="init-tags"><span class="itag">Value-Based Prioritization</span><span class="itag">Executive Credibility</span><span class="itag">IT Portfolio Governance</span></div>
+    </div>
+  </div>
+
+  <div class="vpoint">
+    <div class="vp-num">04</div>
+    <div class="vp-content">
+      <h4>Technology PMO Maturity — Connecting Dante Gerochi's Execution to Executive Accountability</h4>
+      <p>Dante Gerochi (VP Technology PMO) is the highest-value internal champion candidate for the SPM expansion — he sits at the intersection of technology delivery and executive reporting. The PMO maturity question for Franklin Templeton is whether the Technology PMO operates as a delivery function or as a portfolio governance function. Planview's SPM capability enables Gerochi to elevate the PMO from project tracking to portfolio accountability — making his function indispensable to the CIO and EVP-level leadership rather than a reporting overhead.</p>
+      <div class="init-tags"><span class="itag">PMO Maturity</span><span class="itag">Portfolio Governance</span><span class="itag">Champion Development</span><span class="itag">E1 (existing)</span></div>
+    </div>
+  </div>
+
+  <div class="vpoint">
+    <div class="vp-num">05</div>
+    <div class="vp-content">
+      <h4>Post-Acquisition Integration — Unified Portfolio Visibility from Day One</h4>
+      <p>Two acquisitions closing in Q2 2026 mean Franklin Templeton is simultaneously integrating Apera Asset Management and 250 Digital/Franklin Crypto while keeping the core business operational. The most common integration failure is a portfolio governance vacuum: each acquired entity argues its programs are critical, and no one has a unified view of resource constraints across the combined organization. Planview provides the integration governance layer that gives Matthew Nicholls and Alok Sethi a single portfolio view across legacy Franklin Templeton, Apera, and Franklin Crypto programs from the moment the acquisitions close.</p>
+      <div class="init-tags"><span class="itag">M&amp;A Integration</span><span class="itag">Portfolios (SPM)</span><span class="itag">Unified Visibility</span><span class="itag">Resource Modeling</span></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════ COMPETITIVE ═══════════════ -->
+<section id="s-competitive" class="section">
+
+  <div class="card">
+    <div class="card-title"><span class="ctdot"></span>Current Technology Stack &amp; Competitive Assessment</div>
+
+    <!-- Planview footprint pulled from Salesforce subscriptions (SBQQ) Apr 30 2026 -->
+    <div style="background:var(--g50);border-radius:8px;padding:1rem 1.25rem;margin-bottom:1.25rem;">
+      <div style="font-size:11px;font-weight:600;color:var(--g700);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.875rem;">Confirmed Planview Footprint — Active Subscriptions (Salesforce CRM)</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.75rem;">
+        <div style="background:var(--white);border-radius:7px;padding:.75rem 1rem;border:1px solid var(--border);">
+          <div style="font-size:10px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">EnterpriseOne (E1)</div>
+          <div style="font-size:20px;font-weight:700;color:var(--navy);">851</div>
+          <div style="font-size:11px;color:var(--g700);">Full users · Active</div>
+        </div>
+        <div style="background:var(--white);border-radius:7px;padding:.75rem 1rem;border:1px solid var(--border);">
+          <div style="font-size:10px;font-weight:600;color:var(--teal);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">LeanKit</div>
+          <div style="font-size:20px;font-weight:700;color:var(--navy);">769</div>
+          <div style="font-size:11px;color:var(--g700);">Full users · Active</div>
+        </div>
+        <div style="background:var(--white);border-radius:7px;padding:.75rem 1rem;border:1px solid var(--border);">
+          <div style="font-size:10px;font-weight:600;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Projectplace</div>
+          <div style="font-size:20px;font-weight:700;color:var(--navy);">769</div>
+          <div style="font-size:11px;color:var(--g700);">Full users · Active</div>
+        </div>
+        <div style="background:var(--blue-pale);border-radius:7px;padding:.75rem 1rem;border:1px solid rgba(26,95,168,.15);">
+          <div style="font-size:10px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Portfolios — Portfolio Managers</div>
+          <div style="font-size:20px;font-weight:700;color:var(--navy);">309</div>
+          <div style="font-size:11px;color:var(--blue);">Portfolios Flex Full Users · Active</div>
+        </div>
+        <div style="background:var(--blue-pale);border-radius:7px;padding:.75rem 1rem;border:1px solid rgba(26,95,168,.15);">
+          <div style="font-size:10px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Portfolios — Team Members</div>
+          <div style="font-size:20px;font-weight:700;color:var(--navy);">1,500</div>
+          <div style="font-size:11px;color:var(--blue);">750 now + 750 ramping · Portfolios Flex</div>
+        </div>
+        <div style="background:var(--white);border-radius:7px;padding:.75rem 1rem;border:1px solid var(--border);">
+          <div style="font-size:10px;font-weight:600;color:var(--g700);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Portfolios — System Admins</div>
+          <div style="font-size:20px;font-weight:700;color:var(--navy);">10</div>
+          <div style="font-size:11px;color:var(--g700);">Portfolios Flex Sys Admin · Active</div>
+        </div>
+        <div style="background:var(--white);border-radius:7px;padding:.75rem 1rem;border:1px solid var(--border);">
+          <div style="font-size:10px;font-weight:600;color:var(--g700);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Portfolios — Requestors</div>
+          <div style="font-size:20px;font-weight:700;color:var(--navy);">80</div>
+          <div style="font-size:11px;color:var(--g700);">Portfolios and EA only · Active</div>
+        </div>
+        <div style="background:var(--white);border-radius:7px;padding:.75rem 1rem;border:1px solid var(--border);">
+          <div style="font-size:10px;font-weight:600;color:var(--g700);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Tasktop Hub</div>
+          <div style="font-size:20px;font-weight:700;color:var(--navy);">3</div>
+          <div style="font-size:11px;color:var(--g700);">Hub Advanced Connectors · Active</div>
+        </div>
+      </div>
+      <div style="margin-top:.875rem;padding:.625rem .875rem;background:var(--teal-pale);border-radius:6px;font-size:12px;color:var(--teal);font-weight:500;">
+        Total contracted Planview users: 851 E1 + 769 LK + 769 PP + 309 Portfolio Managers + 1,500 Team Members + 80 Requestors + 10 Admins + 3 Hub = <strong>4,291 total seats</strong> · Contract through Dec 29, 2028
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div><div class="comp-name">Planview (Incumbent)</div><div class="comp-role">E1 · LeanKit · Projectplace · Portfolios Flex · Tasktop Hub</div><span class="pill p-green" style="margin-top:6px;">Active Customer</span></div>
+      <div class="comp-items">
+        <div class="comp-item"><span class="cico cwin">✓</span> 851 E1 + 769 LeanKit + 769 Projectplace seats — deep delivery footprint across technology teams</div>
+        <div class="comp-item"><span class="cico cwin">✓</span> 309 Portfolio Manager (Full User) seats + 1,500 Team Member seats in Portfolios Flex — significant SPM footprint</div>
+        <div class="comp-item"><span class="cico cwin">✓</span> 80 Requestor seats + 10 Sys Admin seats + Business Connectivity + Development Sandbox — fully deployed governance stack</div>
+        <div class="comp-item"><span class="cico cwin">✓</span> Anvi AI trial completed Apr 30 — re-engagement with Vasundhara Chetluru is the immediate priority</div>
+        <div class="comp-item"><span class="cico cwin">✓</span> MSA active (Dec 2023) · NET 45 · 4,291 total contracted seats through Dec 2028 · Gartner MQ SPM Leader</div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div><div class="comp-name">Smartsheet</div><div class="comp-role">Work Management (Active Demandbase Signal)</div><span class="pill p-amber" style="margin-top:6px;">Competitive Risk</span></div>
+      <div class="comp-items">
+        <div class="comp-item"><span class="cico cwin">✓</span> Demandbase confirms Smartsheet as primary competitive technology signal</div>
+        <div class="comp-item"><span class="cico cneut">~</span> Wide work management adoption — fast to deploy, low governance depth</div>
+        <div class="comp-item"><span class="cico cx">✗</span> No purpose-built SPM governance or portfolio prioritization</div>
+        <div class="comp-item"><span class="cico cx">✗</span> No value-based portfolio scoring or scenario planning capability</div>
+        <div class="comp-item"><span class="cico cx">✗</span> No AI governance framework for regulated financial services workflows</div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div><div class="comp-name">Microsoft (Azure + Copilot)</div><div class="comp-role">AI Platform and M365 — Intelligence Hub Built on Azure</div><span class="pill p-red" style="margin-top:6px;">Strategic Risk</span></div>
+      <div class="comp-items">
+        <div class="comp-item"><span class="cico cwin">✓</span> Deep Azure and M365 footprint — Intelligence Hub is a Microsoft-powered initiative</div>
+        <div class="comp-item"><span class="cico cneut">~</span> Copilot AI narrative gaining traction — potential project management overlap</div>
+        <div class="comp-item"><span class="cico cx">✗</span> Project management capability, not SPM portfolio governance</div>
+        <div class="comp-item"><span class="cico cx">✗</span> No purpose-built value-based prioritization or scenario planning</div>
+        <div class="comp-item"><span class="cico cx">✗</span> No portfolio-level AI governance layer — Planview Anvi is differentiated here</div>
+      </div>
+    </div>
+
+    <div class="comp-row" style="border-bottom:none;">
+      <div><div class="comp-name">Wand AI</div><div class="comp-role">Agentic AI Workforce — Active Multi-Year Partnership</div><span class="pill p-green" style="margin-top:6px;">Partner Opportunity</span></div>
+      <div class="comp-items">
+        <div class="comp-item"><span class="cico cwin">✓</span> Wand AI is a partner, not a competitor — their agents need portfolio governance</div>
+        <div class="comp-item"><span class="cico cwin">✓</span> Wand OS provides agent management; Planview provides portfolio ROI reporting</div>
+        <div class="comp-item"><span class="cico cwin">✓</span> Positioning: Planview governs the portfolio that decides which Wand agents get funded next</div>
+        <div class="comp-item"><span class="cico cneut">~</span> Wand deployment creates the exact portfolio governance gap that Planview fills</div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ═══════════════ OUTREACH PLAYBOOK ═══════════════ -->
+<section id="s-outreach" class="section">
+
+  <p style="font-size:13px;color:var(--g700);margin-bottom:1.25rem;line-height:1.6;">10 fully differentiated emails and talk tracks. Each targets a specific stakeholder with a unique value angle tailored to Franklin Templeton's 2026 strategic context. No em-dashes or hyphens in messages.</p>
+
+  <div class="email-card">
+    <div class="email-header" onclick="toggleEmail(this)"><div class="enum">1</div><div class="email-hdr-text"><div class="email-to">Dana Jackson — Chief Information Officer</div><div class="email-angle">Opening: SPM Governance to Support the CIO Mandate</div></div><span class="echev">▼</span></div>
+    <div class="email-body">
+      <div class="subj-lbl">Subject Line</div>
+      <div class="subj-line">What portfolio governance looks like for a CIO running five strategic programs at once</div>
+      <div class="email-content">Dana,
+
+Running the IT function at Franklin Templeton in 2026 means managing a portfolio of technology programs that are larger, faster-moving, and more interdependent than at any previous point in the company's history. Intelligence Hub, the Wand AI deployment, Apera integration, 250 Digital onboarding, and the GCG restructuring are all competing for the same technology resources simultaneously.
+
+The question I would like to raise with you is not whether those programs are being managed. It is whether you have a single governance layer above them that lets you answer the board question: which technology investments are delivering measurable business value, and which are creating resource bottlenecks that slow the others down?
+
+Planview is already running inside Franklin Templeton's technology organization through E1, LeanKit, and Projectplace. Your team also just completed an Anvi AI trial. What does not yet exist is the Strategic Portfolio Management layer that connects those execution tools to CIO-level investment accountability.
+
+I would welcome 20 minutes to walk through what that governance layer looks like specifically for your function. Would this week or next work?
+
+Larry Bonham
+Strategic Account Executive, Planview
+lbonham@planview.com | (650) 906-9524</div>
+      <button class="tt-btn" onclick="toggleTT(this)">Phone Talk Track</button>
+      <div class="tt-body">Opening: "Dana, Larry Bonham from Planview. Your teams already use our platform across technology operations, and I am calling because the scale of what Franklin Templeton is executing in 2026 creates a specific governance question at the CIO level that I would like to discuss."
+
+Bridge: "You are running five simultaneous strategic programs with shared technology resources. Without a unified governance layer above the execution tools your teams already use, the answer to the board question about technology investment returns is still assembled from individual status reports rather than read from a dashboard."
+
+Key differentiation: "What Planview adds above E1 and LeanKit is the ability to connect portfolio-level investment decisions to agreed business value criteria. When the board asks which technology programs delivered, you answer with data."
+
+Ask: "Could we find 20 minutes this week or next to discuss the specific programs you are managing and where a portfolio governance layer adds the most value?"</div>
+    </div>
+  </div>
+
+  <div class="email-card">
+    <div class="email-header" onclick="toggleEmail(this)"><div class="enum">2</div><div class="email-hdr-text"><div class="email-to">Melissa Court — SVP, Office of the CIO</div><div class="email-angle">Opening: Champion Re-Activation — Building the Case for the CIO Office</div></div><span class="echev">▼</span></div>
+    <div class="email-body">
+      <div class="subj-lbl">Subject Line</div>
+      <div class="subj-line">Reconnecting on Planview and what has changed at Franklin Templeton</div>
+      <div class="email-content">Melissa,
+
+It has been a while since we were last in conversation, and the pace of change at Franklin Templeton since then has been significant. The Wand AI partnership, the Intelligence Hub launch, the GCG restructuring, and two acquisitions closing in the same quarter represent a level of simultaneous strategic execution that changes the conversation about portfolio governance substantially.
+
+The Office of the CIO is the function best positioned to make the case for a unified portfolio governance layer at this moment. You sit at the intersection of technology delivery and executive visibility, which means you see both where programs are running well and where resource conflicts are being resolved in ways that do not serve the broader portfolio.
+
+Planview is already a significant investment inside Franklin Templeton. What I would like to do is reconnect, understand how the platform is being used today, and explore whether there is a conversation worth having about the Strategic Portfolio Management layer above it.
+
+Would 30 minutes to reconnect make sense this month?
+
+Larry Bonham
+lbonham@planview.com | (650) 906-9524</div>
+      <button class="tt-btn" onclick="toggleTT(this)">Phone Talk Track</button>
+      <div class="tt-body">Opening: "Melissa, Larry Bonham from Planview. We worked together back in 2023 and I wanted to reconnect given everything that has changed at Franklin Templeton since then. The pace of strategic execution in 2026 is significant and I think there is a conversation worth having about what comes next for the Planview investment."
+
+Re-engagement hook: "The Wand AI partnership, Intelligence Hub, and two acquisitions closing simultaneously create exactly the portfolio governance scenario that the Office of the CIO is best positioned to address. I would like to understand how Planview is being used today and whether there is an appetite for a Strategic Portfolio Management conversation at the executive level."
+
+Ask: "Would 30 minutes to reconnect and catch up on where Franklin Templeton is with the platform be worth your time this month?"</div>
+    </div>
+  </div>
+
+  <div class="email-card">
+    <div class="email-header" onclick="toggleEmail(this)"><div class="enum">3</div><div class="email-hdr-text"><div class="email-to">Vasundhara Chetluru — Head of AI Platform</div><div class="email-angle">Opening: Anvi Re-trial — Governing the Wand AI Deployment at Scale</div></div><span class="echev">▼</span></div>
+    <div class="email-body">
+      <div class="subj-lbl">Subject Line</div>
+      <div class="subj-line">Structuring Anvi around the Wand AI program portfolio</div>
+      <div class="email-content">Vasundhara,
+
+The Anvi trial concluded yesterday, and I want to propose what the next phase looks like before the window closes.
+
+You have said publicly that Franklin Templeton is committed to AI that delivers "secure, scalable, and measurable value." In a regulated financial services environment, measurable value means board-reportable outcomes tied to specific program investments. The governance question is not just whether Wand agents are operating. It is which of those agents are delivering on the business case that justified the deployment, and which need to be restructured or deprioritized.
+
+Planview Anvi is the governance layer that answers that question at the portfolio level. A structured deployment connected to your 2026 Wand AI program roadmap would give you a governance artifact that demonstrates responsible AI deployment to regulators and to the board simultaneously.
+
+I would like to propose a specific 30-day re-engagement scoped to the Wand AI portfolio. Would 20 minutes this week work to map that out together?
+
+Larry Bonham
+lbonham@planview.com | (650) 906-9524</div>
+      <button class="tt-btn" onclick="toggleTT(this)">Phone Talk Track</button>
+      <div class="tt-body">Opening: "Vasundhara, Larry Bonham from Planview. The Anvi trial ended yesterday, and I am calling because I want to propose what the next phase looks like before we lose momentum."
+
+Reframe the conversation: "The trial demonstrated the capability. What I want to propose now is a structured deployment scoped specifically to the Wand AI program portfolio. Not a broad tool rollout. A governance layer that connects each Wand agent deployment to the business outcome it was designed to deliver."
+
+Regulatory angle: "In a firm where AI agents operate in investment research and compliance workflows, governance is not optional. The SEC is watching how financial services firms govern AI deployment. Planview Anvi gives you a traceable governance record for every agent in your portfolio."
+
+Ask: "Can we find 20 minutes this week to structure a 30-day re-engagement scoped to your highest-priority Wand AI programs?"</div>
+    </div>
+  </div>
+
+  <div class="email-card">
+    <div class="email-header" onclick="toggleEmail(this)"><div class="enum">4</div><div class="email-hdr-text"><div class="email-to">Dante Gerochi — VP, Technology PMO</div><div class="email-angle">Opening: Champion Coaching — Elevating the PMO to Portfolio Governance</div></div><span class="echev">▼</span></div>
+    <div class="email-body">
+      <div class="subj-lbl">Subject Line</div>
+      <div class="subj-line">Elevating the Technology PMO from delivery tracking to portfolio accountability</div>
+      <div class="email-content">Dante,
+
+The Technology PMO you run sits at exactly the right intersection to make the next case for Planview's Strategic Portfolio Management capability internally. You have the delivery context, the technology credibility, and the executive visibility to frame the conversation in a way that resonates at the CIO and EVP level.
+
+What I want to explore with you is whether the PMO is positioned today to answer the executive question: which of the technology programs in the portfolio are delivering the most business value relative to their resource consumption? If the answer is that this visibility lives in individual program status reports rather than in a single governance layer, that is the specific gap I want to discuss.
+
+Planview's SPM capability elevates the PMO from a project tracking function to a portfolio accountability function. That shift changes how the CIO views your organization and how the business views technology investment decisions.
+
+I would like to put together a business case framework with you for bringing this to Dana Jackson and Melissa Court. Would 30 minutes make sense this week?
+
+Larry Bonham
+lbonham@planview.com | (650) 906-9524</div>
+      <button class="tt-btn" onclick="toggleTT(this)">Phone Talk Track</button>
+      <div class="tt-body">Opening: "Dante, Larry Bonham from Planview. I am calling because with everything Franklin Templeton is executing right now, the Technology PMO is uniquely positioned to make the internal case for the next phase of Planview. I want to make sure you have the right tools and framing to carry that conversation to Dana Jackson and Melissa Court."
+
+Champion coaching: "First, frame the SPM expansion as a PMO maturity decision, not a licensing discussion. The question to ask the CIO is: does the PMO give us portfolio-level investment accountability today, or just delivery status visibility? Second, the Anvi trial that just ended is a concrete hook. Third, the GCG restructuring creates urgency because new leaders need governance infrastructure fast."
+
+What I can provide: "I can put together a business value case document tied to Franklin Templeton's current program portfolio, a financial services reference case for PMO-driven SPM governance, and a briefing format optimized for the CIO audience."
+
+Ask: "What is the most useful thing I can put in your hands this week to support the internal conversation?"</div>
+    </div>
+  </div>
+
+  <div class="email-card">
+    <div class="email-header" onclick="toggleEmail(this)"><div class="enum">5</div><div class="email-hdr-text"><div class="email-to">Alok Sethi — EVP, Global Operations</div><div class="email-angle">Opening: Board-Level Portfolio Accountability for the 2026 Program Portfolio</div></div><span class="echev">▼</span></div>
+    <div class="email-body">
+      <div class="subj-lbl">Subject Line</div>
+      <div class="subj-line">Portfolio accountability across Franklin Templeton's 2026 strategic program investments</div>
+      <div class="email-content">Alok,
+
+Your global operations mandate puts you at the center of a portfolio of strategic investments that few organizations are running simultaneously. Intelligence Hub, Wand AI, two acquisitions, and a Global Client Group restructuring are each individually significant. Together, they represent a combined investment that requires portfolio-level accountability to demonstrate to the board and to your CFO.
+
+The question I want to raise is not whether the programs are moving. It is whether you have a governance infrastructure that can answer, at any point in the quarter, which programs are on track against their business value commitments, which are creating resource bottlenecks for the others, and which need to be sequenced differently given what has changed in the market.
+
+Planview already operates inside Franklin Templeton's technology organization. The Strategic Portfolio Management layer above the execution tools your teams use is where I believe there is a specific near-term opportunity at your level.
+
+Would 20 minutes to discuss what that governance layer looks like for Franklin Templeton's current program portfolio make sense this week?
+
+Larry Bonham
+lbonham@planview.com | (650) 906-9524</div>
+      <button class="tt-btn" onclick="toggleTT(this)">Phone Talk Track</button>
+      <div class="tt-body">Opening: "Alok, Larry Bonham from Planview. Your team already runs our platform in the technology organization, and I am calling because the scale of what Franklin Templeton is executing in 2026 creates a board-level portfolio accountability question that I want to discuss."
+
+Key frame: "Five simultaneous strategic programs with shared operations and technology resources. Without a unified governance layer above the execution tools, the answer to the CFO question about investment returns is still assembled from individual status reports."
+
+Differentiation: "What Planview adds above the E1 and LeanKit your teams use today is the ability to connect portfolio investment decisions to agreed business value criteria. When the board asks which programs delivered, you answer with data not narrative."
+
+Ask: "Could we find 20 minutes this week or next?"</div>
+    </div>
+  </div>
+
+  <div class="email-card">
+    <div class="email-header" onclick="toggleEmail(this)"><div class="enum">6</div><div class="email-hdr-text"><div class="email-to">Joseph Boerio — EVP, Chief Risk &amp; Transformation Officer</div><div class="email-angle">Opening: Transformation Portfolio Governance as Risk Management</div></div><span class="echev">▼</span></div>
+    <div class="email-body">
+      <div class="subj-lbl">Subject Line</div>
+      <div class="subj-line">Transformation portfolio governance as an enterprise risk management tool</div>
+      <div class="email-content">Joe,
+
+Your role as Chief Risk and Transformation Officer sits at a precise intersection that I want to raise with you. Transformation risk and portfolio governance risk are two sides of the same problem: without visibility into which transformation programs are on track, which are consuming resources ahead of plan, and which are creating downstream risk for other initiatives, the risk profile of the portfolio as a whole is unknown until it surfaces as an escalation.
+
+Franklin Templeton is running an ambitious transformation portfolio in 2026. The Wand AI deployment, the Intelligence Hub build, and two acquisitions all carry transformation risk that compounds when they share resources. The question I want to explore with you is whether the current governance infrastructure gives you enough visibility into that compound risk to manage it proactively.
+
+Planview's portfolio risk governance capability, including the Anvi AI risk detection layer, is built precisely for this scenario. I would welcome 20 minutes to walk you through how it applies to Franklin Templeton's current program portfolio.
+
+Larry Bonham
+lbonham@planview.com | (650) 906-9524</div>
+      <button class="tt-btn" onclick="toggleTT(this)">Phone Talk Track</button>
+      <div class="tt-body">Opening: "Joe, Larry Bonham from Planview. Your role overseeing both risk and transformation gives you a unique vantage point on the portfolio governance question I want to raise. The compound risk of running five simultaneous transformation programs with shared resources is a portfolio-level problem, not a program-level one."
+
+Key question: "How do you currently assess the compound risk across the Wand AI deployment, Intelligence Hub, and the two acquisitions closing in Q2? Is that risk visible at the portfolio level today, or aggregated from individual program status reports?"
+
+Bridge: "That is the specific gap Planview's portfolio risk governance capability addresses. Anvi AI surfaces delivery risk signals across the portfolio before they appear in status reports, giving you a proactive risk posture rather than a reactive one."
+
+Ask: "Would 20 minutes to walk through the portfolio risk governance use case for Franklin Templeton's current program context be worth your time?"</div>
+    </div>
+  </div>
+
+  <div class="email-card">
+    <div class="email-header" onclick="toggleEmail(this)"><div class="enum">7</div><div class="email-hdr-text"><div class="email-to">Ricky Kapur — Director, Investment Management PMO</div><div class="email-angle">Opening: IM PMO Maturity and the Case for SPM at the Investment Level</div></div><span class="echev">▼</span></div>
+    <div class="email-body">
+      <div class="subj-lbl">Subject Line</div>
+      <div class="subj-line">Building the investment management PMO governance case for 2026</div>
+      <div class="email-content">Ricky,
+
+The Investment Management PMO you lead operates in one of the most complex portfolio governance environments in financial services. You are managing programs that directly affect investment operations, data science, and client delivery capabilities simultaneously, with resource constraints that rarely move in the direction that would make all of them straightforward.
+
+What I want to raise is the maturity question: does the IM PMO today have the governance tools to make portfolio-level trade-off decisions that are defensible to the CIO and the Chief Risk Officer, or are those decisions still being negotiated in prioritization meetings without a shared data foundation?
+
+Planview's SPM capability is the governance layer that closes that gap. Your teams already use E1 and LeanKit for delivery. The portfolio prioritization and scenario planning layer above those tools is where the IM PMO maturity conversation gets interesting.
+
+I would welcome 30 minutes to discuss the specific governance challenge you are managing. Would this week work?
+
+Larry Bonham
+lbonham@planview.com | (650) 906-9524</div>
+      <button class="tt-btn" onclick="toggleTT(this)">Phone Talk Track</button>
+      <div class="tt-body">Opening: "Ricky, Larry Bonham from Planview. Your role leading the Investment Management PMO puts you at the center of a portfolio governance maturity question that I want to explore with you. How does the IM PMO make trade-off decisions today when investment operations, data programs, and client delivery programs compete for the same resources?"
+
+Discovery: "Is that a structured portfolio prioritization process with agreed criteria, or is it resolved in a meeting based on urgency and stakeholder influence? That distinction is the exact maturity gap that Planview's SPM layer addresses."
+
+Key message: "Your teams already use Planview E1 and LeanKit for delivery. The portfolio governance layer above those tools is what elevates the PMO from a delivery function to a strategic advisory function for the CIO."
+
+Ask: "Can we find 30 minutes to map the specific governance challenge you face in IM PMO against what Planview's SPM capability provides?"</div>
+    </div>
+  </div>
+
+  <div class="email-card">
+    <div class="email-header" onclick="toggleEmail(this)"><div class="enum">8</div><div class="email-hdr-text"><div class="email-to">Rajat Gupta — SVP, Technology for Data &amp; Analytics</div><div class="email-angle">Opening: Connecting Data Science Investment to Measurable Business Outcomes</div></div><span class="echev">▼</span></div>
+    <div class="email-body">
+      <div class="subj-lbl">Subject Line</div>
+      <div class="subj-line">Portfolio accountability for the data and analytics investment at Franklin Templeton</div>
+      <div class="email-content">Rajat,
+
+Running Technology for Data and Analytics at Franklin Templeton means managing a portfolio of programs where the gap between investment and measurable business outcome is often wider than the business would like to acknowledge.
+
+The specific governance challenge I want to raise is not a delivery problem. It is an accountability gap. Data science and analytics investments are evaluated by the models deployed and the pipelines built. The harder question, and the one that matters for continued investment justification, is which of those programs actually changed an investment outcome, an operational efficiency, or a client experience in a measurable way.
+
+With Franklin Templeton simultaneously deploying Wand AI agents and building out the Intelligence Hub, the governance question about which AI and data investments are delivering against their business case has become a board-level concern. Planview's portfolio governance capability addresses this by connecting program execution to agreed outcome metrics at the portfolio level.
+
+I would welcome 20 minutes to discuss the specific accountability challenge you face in the data and analytics portfolio.
+
+Larry Bonham
+lbonham@planview.com | (650) 906-9524</div>
+      <button class="tt-btn" onclick="toggleTT(this)">Phone Talk Track</button>
+      <div class="tt-body">Opening: "Rajat, Larry Bonham from Planview. I am calling because the data and analytics portfolio governance challenge at Franklin Templeton is one that I think connects directly to the AI governance agenda Vasundhara Chetluru is driving, and I have a specific point of view on how portfolio accountability addresses both simultaneously."
+
+Key question: "How do you currently demonstrate the business outcome impact of the data and analytics programs your team is running, beyond project completion milestones and model deployment reports?"
+
+Bridge: "That accountability gap is exactly what Planview's portfolio outcome governance addresses. With the Wand AI deployment and Intelligence Hub both landing in 2026, the data and analytics portfolio governance question has become a board-level concern. Portfolio governance connects your investment decisions to measurable outcomes in a form that the board and the CFO can evaluate."
+
+Ask: "Can we find 20 minutes to discuss how portfolio outcome governance applies to the specific programs your team is managing?"</div>
+    </div>
+  </div>
+
+  <div class="email-card">
+    <div class="email-header" onclick="toggleEmail(this)"><div class="enum">9</div><div class="email-hdr-text"><div class="email-to">Karen Lewis — VP-IT, Office of the CIO</div><div class="email-angle">Opening: IT Office Champion — Supporting the CIO Governance Agenda</div></div><span class="echev">▼</span></div>
+    <div class="email-body">
+      <div class="subj-lbl">Subject Line</div>
+      <div class="subj-line">Reconnecting on Planview and the CIO office governance agenda</div>
+      <div class="email-content">Karen,
+
+It has been a while since we last connected, and the context at Franklin Templeton has changed significantly since then. The scale of the current technology program portfolio, including the Wand AI deployment, Intelligence Hub, the GCG restructuring, and two acquisitions closing simultaneously, creates a portfolio governance conversation that is urgent in a way it was not before.
+
+The Office of the CIO is where that governance conversation either happens proactively or waits until the first resource conflict escalates to the executive level. Your role puts you in a position to shape which outcome it is.
+
+I would like to reconnect and understand where the Office of the CIO is today with the Planview platform, and whether there is a specific governance conversation worth having about the programs currently in flight.
+
+Would 20 minutes to reconnect make sense this month?
+
+Larry Bonham
+lbonham@planview.com | (650) 906-9524</div>
+      <button class="tt-btn" onclick="toggleTT(this)">Phone Talk Track</button>
+      <div class="tt-body">Opening: "Karen, Larry Bonham from Planview. We worked together back in 2023 and I am calling to reconnect because the context at Franklin Templeton has changed significantly since then, and I think there is a conversation worth having about the CIO office governance agenda for 2026."
+
+Re-engagement: "The scale of the technology program portfolio right now creates a portfolio governance urgency that was not present in 2023. Wand AI, Intelligence Hub, two acquisitions, and the GCG restructuring are all sharing technology resources simultaneously."
+
+Ask: "Could we find 20 minutes to reconnect, understand where the Office of the CIO is with the Planview platform today, and discuss whether there is a governance conversation worth developing further?"</div>
+    </div>
+  </div>
+
+  <div class="email-card">
+    <div class="email-header" onclick="toggleEmail(this)"><div class="enum">10</div><div class="email-hdr-text"><div class="email-to">Martin Little — PMO Director (UK)</div><div class="email-angle">Opening: Active Champion — Carrying the SPM Case to Global Technology Leadership</div></div><span class="echev">▼</span></div>
+    <div class="email-body">
+      <div class="subj-lbl">Subject Line</div>
+      <div class="subj-line">Supporting the internal case for Planview SPM at the leadership level</div>
+      <div class="email-content">Martin,
+
+Given that you are the most recently active Planview contact at Franklin Templeton, I want to make sure you have everything you need to carry the platform conversation to the next level internally.
+
+The context right now is strong. The Anvi AI trial just concluded, two acquisitions are closing in Q2, the GCG has three new leaders, and the Technology PMO is managing more simultaneous programs than at any point since the platform was first deployed. Each of those is a specific, concrete case for Strategic Portfolio Management governance above the execution tools the team already uses.
+
+What I want to do is give you the tools to make that case to Dana Jackson, Melissa Court, and Dante Gerochi in a way that connects directly to the programs they are managing today.
+
+What would be most useful: a business value document tied to Franklin Templeton's current program portfolio, a reference case from a comparable asset manager, or a specific briefing framework for the CIO audience? Would 30 minutes this week to build the internal strategy together make sense?
+
+Larry Bonham
+lbonham@planview.com | (650) 906-9524</div>
+      <button class="tt-btn" onclick="toggleTT(this)">Phone Talk Track</button>
+      <div class="tt-body">Opening: "Martin, Larry Bonham from Planview. You are the most recently active contact at Franklin Templeton and I am calling because you are in the best position to help carry the SPM expansion conversation to Dana Jackson, Melissa Court, and Dante Gerochi. I want to make sure you have the right tools to do that."
+
+Champion coaching priorities: "First, frame the SPM conversation as a portfolio governance maturity decision tied to the current program portfolio, not a licensing discussion. Second, lead with the Anvi trial just ending as a concrete proof point for AI governance value. Third, the GCG restructuring and two acquisitions closing simultaneously are the strongest business case anchors right now."
+
+What I can provide: "Business value case tied to Franklin Templeton's program context. Financial services reference case for PMO-driven SPM governance. Briefing format for the CIO audience."
+
+Ask: "What is the single most useful thing I can put in your hands this week to support an internal conversation with Melissa Court or Dante Gerochi?"</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════ DEAL HISTORY ═══════════════ -->
+<section id="s-deals" class="section">
+
+  <div class="card">
+    <div class="card-title"><span class="ctdot"></span>Salesforce CRM Deal History — Franklin Templeton</div>
+    <div style="overflow-x:auto;">
+      <table class="deal-tbl">
+        <thead><tr><th>Opportunity Name</th><th>Type</th><th>Amount</th><th>Close Date</th><th>Stage</th></tr></thead>
+        <tbody>
+          <tr><td>Renewal: Franklin Templeton Companies, LLC 2028-12-29</td><td>Renewal</td><td style="font-weight:600;">$3,130,800</td><td>Dec 29, 2028</td><td><span class="d-open">Created</span></td></tr>
+          <tr><td>Franklin Templeton Companies, LLC — Add Full Users 3/29/26</td><td>Additional Licenses</td><td style="font-weight:600;">$134,247</td><td>May 21, 2026</td><td><span class="d-open">Stage 4 Negotiate</span></td></tr>
+          <tr><td>FT Anvi 1 Month Trial</td><td>Additional Licenses</td><td>—</td><td>Apr 30, 2026</td><td><span class="d-lost">Closed Lost</span></td></tr>
+          <tr><td>Franklin Templeton — Anvi Trial Expires April 30</td><td>Additional Licenses</td><td>—</td><td>Apr 30, 2026</td><td><span class="d-lost">Closed Lost</span></td></tr>
+          <tr><td>Franklin Templeton — Planview Adopt</td><td>Additional Licenses</td><td>$189,284</td><td>Feb 27, 2026</td><td><span class="d-lost">Closed Lost</span></td></tr>
+          <tr><td>FRTE-001 CO3, IF02 and IF03 Changes</td><td>Services</td><td>$24,000</td><td>Sep 3, 2025</td><td><span class="d-won">Closed Won</span></td></tr>
+          <tr><td>FRTE-001 CO2: Integration Changes (Fixed Fee)</td><td>Services</td><td>$18,000</td><td>May 22, 2025</td><td><span class="d-won">Closed Won</span></td></tr>
+          <tr><td>Franklin Templeton Viz</td><td>Cross-Sell</td><td>—</td><td>Dec 13, 2024</td><td><span class="d-lost">Closed Lost</span></td></tr>
+          <tr><td>FRTE-003 — Franklin Templeton — Managed Service</td><td>Services</td><td>$23,460</td><td>Dec 28, 2023</td><td><span class="d-won">Closed Won</span></td></tr>
+          <tr><td>FRTE-001 — Franklin Templeton — FastTrack</td><td>Services</td><td>$368,800</td><td>Dec 27, 2023</td><td><span class="d-won">Closed Won</span></td></tr>
+          <tr><td style="font-weight:600;">Franklin Templeton — SPM, EAP (First Win)</td><td>New Logo</td><td style="font-weight:700;color:var(--teal);">$2,692,925</td><td>Dec 26, 2023</td><td><span class="d-won">Closed Won</span></td></tr>
+          <tr><td>Franklin Templeton Viz Cat 500 New TP#</td><td>New Logo</td><td>$275,000</td><td>Dec 22, 2023</td><td><span class="d-lost">Closed Lost</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title"><span class="ctdot"></span>Deal Summary</div>
+      <table class="kv">
+        <tr><td>First Win (SPM, EAP)</td><td style="color:var(--teal);font-weight:700;">$2,692,925</td></tr>
+        <tr><td>Services Won Total</td><td style="color:var(--teal);font-weight:700;">$434,260</td></tr>
+        <tr><td>In Negotiation</td><td style="color:var(--blue);font-weight:700;">$134,247</td></tr>
+        <tr><td>2028 Renewal Pipeline</td><td style="font-weight:700;">$3,130,800</td></tr>
+        <tr><td>Closed Lost (2024-2026)</td><td style="color:var(--red);">$464,284 in lost opportunities</td></tr>
+        <tr><td>Days Since First Win</td><td>856+ days (Dec 26, 2023)</td></tr>
+        <tr><td>Account Source</td><td>Event — Tradeshow</td></tr>
+        <tr><td>Outstanding Invoices</td><td><span class="pill p-red">3 outstanding — resolve now</span></td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="ctdot"></span>Key Deal Observations</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="background:var(--red-pale);border-radius:6px;padding:8px 10px;font-size:12px;color:var(--red);">Two consecutive Anvi trial opportunities Closed Lost — both expired Apr 30, 2026. Re-engagement with Vasundhara Chetluru is an immediate priority today.</div>
+        <div style="background:var(--red-pale);border-radius:6px;padding:8px 10px;font-size:12px;color:var(--red);">Planview Adopt ($189K) closed lost Feb 2026 — understand the blocker before reapproaching adoption expansion with Dante Gerochi or Martin Little.</div>
+        <div style="background:var(--amber-pale);border-radius:6px;padding:8px 10px;font-size:12px;color:var(--amber);">Franklin Templeton Viz ($275K) closed lost Dec 2023. Visualization capability may resurface as a reporting requirement in SPM expansion conversation.</div>
+        <div style="background:var(--teal-pale);border-radius:6px;padding:8px 10px;font-size:12px;color:var(--teal);">$2.69M first win in Dec 2023 confirms capacity for large SPM investments — the commercial appetite is there.</div>
+        <div style="background:var(--blue-pale);border-radius:6px;padding:8px 10px;font-size:12px;color:var(--blue);">FastTrack implementation ($368K) closed same month as first win — rebuild that implementation momentum with the SPM expansion motion.</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════ LIVE FEED ═══════════════ -->
+<section id="s-feed" class="section">
+
+  <div class="card">
+    <div class="card-title"><span class="ctdot"></span>Recent Activity and News Feed</div>
+
+    <div class="feed-item">
+      <div class="feed-icon" style="background:var(--red-pale);">🔴</div>
+      <div>
+        <div class="feed-title">Anvi AI Trial — Closed Lost Today</div>
+        <div class="feed-desc">Both "Franklin Templeton — Anvi Trial Expires April 30" and "FT Anvi 1 Month Trial" closed as Lost on Apr 30, 2026. Vasundhara Chetluru re-engagement is the most urgent immediate action.</div>
+        <div class="feed-time">April 30, 2026 · Salesforce CRM</div>
+      </div>
+    </div>
+
+    <div class="feed-item">
+      <div class="feed-icon" style="background:var(--blue-pale);">📋</div>
+      <div>
+        <div class="feed-title">Add Full Users — Stage 4 Negotiate ($134K, Close May 21)</div>
+        <div class="feed-desc">Franklin Templeton Companies, LLC — Add Full Users 3/29/26 is in Stage 4 Negotiate. Close date is May 21, 2026. Actively needs to be brought to close before end of Q2.</div>
+        <div class="feed-time">March 29, 2026 · Salesforce CRM</div>
+      </div>
+    </div>
+
+    <div class="feed-item">
+      <div class="feed-icon" style="background:var(--teal-pale);">🏢</div>
+      <div>
+        <div class="feed-title">GCG Leadership Restructuring — 3 New Appointments (Mar 31)</div>
+        <div class="feed-desc">Brett Mossman (Head of US Product), Lyenda Delp (Head of Global Insurance and Institutional), Kim Roy (COO of GCG). Three new buyer personas to develop for SPM expansion across the Global Client Group.</div>
+        <div class="feed-time">March 31, 2026 · Franklin Resources Press Release</div>
+      </div>
+    </div>
+
+    <div class="feed-item">
+      <div class="feed-icon" style="background:var(--amber-pale);">⚡</div>
+      <div>
+        <div class="feed-title">Franklin Crypto Unit Formed — 250 Digital Acquisition (Q2 2026)</div>
+        <div class="feed-desc">Franklin Templeton acquiring 250 Digital/CoinFund to form new Franklin Crypto unit. Christopher Perkins and Seth Ginns to lead, reporting to Sandy Kaul. Closing Q2 2026. New integration governance opportunity.</div>
+        <div class="feed-time">April 1, 2026 · PYMNTS</div>
+      </div>
+    </div>
+
+    <div class="feed-item">
+      <div class="feed-icon" style="background:var(--blue-pale);">🤖</div>
+      <div>
+        <div class="feed-title">Intelligence Hub Launched on Microsoft Azure</div>
+        <div class="feed-desc">CEO Jenny Johnson launched Intelligence Hub, a modular AI distribution platform on Azure. "This platform is a powerful example of how innovation can transform the way we serve clients." Key SPM governance hook for the Technology PMO conversation.</div>
+        <div class="feed-time">2026 · Franklin Resources Press Release</div>
+      </div>
+    </div>
+
+    <div class="feed-item">
+      <div class="feed-icon" style="background:var(--teal-pale);">💰</div>
+      <div>
+        <div class="feed-title">Alternatives AUM Reaches $280B — Apera Acquisition Included</div>
+        <div class="feed-desc">Franklin Templeton alternatives AUM grows to $280B as of March 2026, including Apera Asset Management acquisition for private credit. Ongoing integration creates portfolio governance opportunity alongside 250 Digital.</div>
+        <div class="feed-time">March 2026 · ReelFinancial</div>
+      </div>
+    </div>
+
+    <div class="feed-item">
+      <div class="feed-icon" style="background:var(--amber-pale);">⚠️</div>
+      <div>
+        <div class="feed-title">Western Asset Management — Ongoing AUM Outflows ($34B+ Q1 2025)</div>
+        <div class="feed-desc">Continued outflows from Western Asset Management subsidiary. Ongoing pressure creates executive attention deficit and "all programs critical" dynamic across corporate strategy — most urgent context for SPM prioritization governance.</div>
+        <div class="feed-time">Q1 2025 Ongoing · Franklin Resources Filings</div>
+      </div>
+    </div>
+
+    <div class="feed-item">
+      <div class="feed-icon" style="background:var(--blue-pale);">🤝</div>
+      <div>
+        <div class="feed-title">Wand AI Multi-Year Partnership — Enterprise Agentic AI Deployment</div>
+        <div class="feed-desc">Strategic partnership announced November 2025. By 2026, Wand-powered agents targeted for the majority of enterprise workflows. Vasundhara Chetluru leads program governance. Primary re-engagement entry point for Anvi and SPM expansion.</div>
+        <div class="feed-time">November 6, 2025 · BusinessWire</div>
+      </div>
+    </div>
+
+    <div class="feed-item">
+      <div class="feed-icon" style="background:var(--coral-pale);">🔗</div>
+      <div>
+        <div class="feed-title">Binance Off-Exchange Collateral Program — Benji Platform Expansion</div>
+        <div class="feed-desc">Franklin Templeton and Binance announced institutional off-exchange collateral program using Benji tokenized money market fund shares. Expansion of the September 2025 strategic collaboration. Roger Bayston (Head of Digital Assets) is program sponsor.</div>
+        <div class="feed-time">February 16, 2026 · Platform Africa</div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+</main>
+
+<script>
+function nav(id, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('s-' + id).classList.add('active');
+  el.classList.add('active');
+}
+
+function orgFilter(type, btn) {
+  document.querySelectorAll('.org-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const all = document.querySelectorAll('[data-tags]');
+  all.forEach(el => {
+    const parent = el.closest('.s-target, .s-champion, .s-exec, .s-warm, .s-cold') || el;
+    if (type === 'all') {
+      parent.style.display = '';
+    } else {
+      const tags = el.getAttribute('data-tags') || '';
+      parent.style.display = tags.includes(type) ? '' : 'none';
+    }
+  });
+}
+
+function toggleEmail(header) {
+  const body = header.nextElementSibling;
+  const ch = header.querySelector('.echev');
+  body.classList.toggle('open');
+  ch.textContent = body.classList.contains('open') ? '▲' : '▼';
+}
+
+function toggleTT(btn) {
+  const body = btn.nextElementSibling;
+  body.classList.toggle('open');
+  btn.textContent = body.classList.contains('open') ? 'Hide Talk Track' : 'Phone Talk Track';
+}
+</script>
+</body>
+</html>
